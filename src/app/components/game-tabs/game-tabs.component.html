@@ -13,7 +13,9 @@
             </p>
             <p *ngIf="game.website" class="game-tabs-par">
                 Website:
-                <a class="game-tabs-link" href="{{ game.website }}" target="-blank">http://</a>
+                <a class="game-tabs-link" href="{{ game.website }}" target="-blank">{{
+                    game.website    
+                }}</a>
             </p>
             <div class="game-description" [innerHTML]="game.description"></div>
             <p class="game-tabs-votes">
