@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DAL;
 
 namespace API.Controllers
 {
@@ -12,27 +13,13 @@ namespace API.Controllers
     public class ValuesController : ControllerBase
     {
 
-        private readonly ApplicationDbContext _context;
-
-        public ValuesController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-        
-  //Methods
-        public async Task<IActionResult> GetValues()
-        {
-            var values = await _context.Values.ToListAsync();
-            return Ok(values);
-        }
-
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetValue(int id)
+        public ActionResult<string> Get(int id)
         {
-            var value = await _context.Values.FirstOrDefaultAsync(v => v.Id == id);
-            return Ok(value);
+            return "value";
         }
+ 
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
